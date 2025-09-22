@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* News Portal Design System - Orange/Saffron Theme */
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 15%;
+
+    /* Primary orange/saffron theme */
+    --primary: 25 95% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 25 95% 48%;
+    --primary-light: 25 95% 95%;
+
+    /* Secondary neutral tones */
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 0 0% 25%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 25 95% 53%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 90%;
+    --input: 210 20% 94%;
+    --ring: 25 95% 53%;
+
+    --radius: 0.5rem;
+
+    /* News portal specific colors */
+    --sidebar-bg: 0 0% 100%;
+    --sidebar-hover: 25 95% 97%;
+    --article-shadow: 0 0% 0% / 0.08;
+    --header-bg: 0 0% 100%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(25 95% 53%), hsl(30 95% 58%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 20% 98%));
+
+    /* Typography */
+    --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 25 95% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 25 95% 48%;
+    --primary-light: 25 95% 15%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 85%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 25 95% 53%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 25 95% 53%;
+
+    --sidebar-bg: 0 0% 10%;
+    --sidebar-hover: 25 95% 10%;
+    --article-shadow: 0 0% 100% / 0.08;
+    --header-bg: 0 0% 10%;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(25 95% 53%), hsl(30 95% 58%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 10%), hsl(0 0% 12%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-[var(--font-body)] antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-[var(--font-heading)] font-semibold;
+  }
+}
+
+@layer components {
+  .news-card {
+    @apply bg-card border border-border rounded-lg shadow-[0_2px_10px_hsl(var(--article-shadow))] hover:shadow-[0_4px_20px_hsl(var(--article-shadow))] transition-all duration-300;
+  }
+
+  .news-card-image {
+    @apply relative overflow-hidden rounded-t-lg;
+  }
+
+  .category-item {
+    @apply flex items-center gap-3 px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--sidebar-hover))] transition-colors rounded-lg cursor-pointer;
+  }
+
+  .category-active {
+    @apply text-primary bg-[hsl(var(--primary-light))] hover:bg-[hsl(var(--primary-light))];
+  }
+
+  /* Text truncation utilities */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Prose styles for article content */
+  .prose {
+    @apply text-foreground;
+  }
+
+  .prose p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply font-semibold mb-3 text-foreground;
+  }
+
+  .prose ul, .prose ol {
+    @apply mb-4 ml-6;
+  }
+
+  .prose li {
+    @apply mb-1;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-primary pl-4 italic text-muted-foreground;
+  }
+}
